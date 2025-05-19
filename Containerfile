@@ -5,18 +5,15 @@ WORKDIR /tmp
 
 RUN apt update && \
     apt install -y --no-install-recommends \
-    wget \
-    bsdtar
+      wget \
+      dpkg && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN wget -O chrome.deb \
       "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable\
 /google-chrome-stable_${VERSION}_amd64.deb"
 
-RUN bsdtar -Oxf chrome.deb data.tar.xz | \
-      bsdtar -xf - \
-        --strip-components=4 \
-        --exclude='./opt/google/chrome/nacl*' \
-        ./opt/google/chrome && \
+RUN dpkg-deb -x chrome.deb / && \
     rm chrome.deb
 
 RUN install -Dm755 /app/bin/stub_sandbox /usr/bin/chrome-sandbox
