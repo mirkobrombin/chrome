@@ -29,14 +29,13 @@ RUN chmod +x /usr/bin/google-chrome && \
       libgtk-3-0 \
       libnss3 \
       libxss1 \
-      libasound2 \
+      libasound2t64 \
       libx11-xcb1 \
       libxcb1 \
       libatk1.0-0 \
       libcups2 \
       libdbus-1-3 \
       libdrm2 \
-      libgconf-2-4 \
       libgbm1 \
       libpango-1.0-0 \
       libpangocairo-1.0-0 \
