@@ -16,8 +16,6 @@ RUN wget -O chrome.deb \
 RUN dpkg-deb -x chrome.deb / && \
     rm chrome.deb
 
-RUN install -Dm755 /app/bin/stub_sandbox /usr/bin/chrome-sandbox
-
 # 2. RUNTIME
 FROM ghcr.io/containerpak/gtk:main
 COPY --from=builder /opt/google/chrome /usr/
